@@ -4,6 +4,8 @@ background-color: #191414
 
  
 .screen1 h1 {
+    font-family: 'Secular One', sans-serif;
+    font-size: 70px;
     color: #1DB954;
     position: absolute;
         z-index: 999;
@@ -13,7 +15,23 @@ background-color: #191414
         top: 4%;
         text-align: center;
         
+        
 }
+
+.screen1 #startGame {
+    background-color:  #1DB954;;
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 38%;
+    left: 1%;
+    width: 20%;
+    text-align: center;
+    
+}
+
 .cassette {
     border-radius: 15px;
     width: 80%;
@@ -24,4 +42,10 @@ margin-right: auto;
 position: relative;
 top: 172px;
 
+
 }
+
+.screen2 {
+    display: none;
+}
+
