@@ -46,6 +46,33 @@ top: 172px;
 }
 
 .screen2 {
+    
     display: none;
+    
+   
 }
 
+.card {
+    background-color:#191414;
+    display: flex;
+    justify-content: center;
+}
+
+.card-body{
+    background-color:#191414;
+    padding: 6.25rem;
+}
+
+.fas {
+    color:#1DB954;
+    font-size: 400px;
+}
+.randomGen {
+    color: #FFFFFF;
+    font-family: 'Secular One', sans-serif;
+    font-size: 45px;
+    position: relative;
+    top: -385px;
+    left: 126px;
+    transform: rotate(-17deg);
+}

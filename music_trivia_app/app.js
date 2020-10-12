@@ -17,7 +17,7 @@ $(() => {
   function generateGenre() {
     const $randomGenre = $genres[(Math.floor(Math.random() * $genres.length))]
     // console.log($randomGenre)
-    $('.card-body').html($randomGenre)
+    $('.randomGen').html($randomGenre)
   }
 
   $startButton.on('click', () => {
