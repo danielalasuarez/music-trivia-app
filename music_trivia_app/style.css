@@ -19,7 +19,8 @@ background-color: #191414
 }
 
 .screen1 #startGame {
-    background-color:  #1DB954;;
+    border-color: #1DB954;
+    background-color: #191414;
     position: absolute;
     z-index: 999;
     margin: 0 auto;
@@ -30,6 +31,11 @@ background-color: #191414
     width: 20%;
     text-align: center;
     
+}
+
+#startGame:hover {
+    background-color:  #1DB954;
+    border-color: #191414;
 }
 
 .cassette {
@@ -94,6 +100,7 @@ top: 172px;
 #round1Challenge{
     width: 150%;
     height: 900px;
+    max-width: 100%;
 }
 #roundHeader {
     background-color: #FFFFFF;
@@ -104,14 +111,17 @@ top: 172px;
     color: #191414;
     
 }
-#roundBttn {
+#roundBttn{
     background-color: #191414;
     color: #FFFFFF;
     margin-top: 10px;
+    border-color: #FFFFFF;
+    
 }
 #roundBttn:hover {
     background-color: #FFFFFF;
     color: #191414;
+    border-color: #191414;
 }
 #answerBox{
     width: 90%;
