@@ -24,53 +24,117 @@ $(() => {
     $('.randomGen').html($randomGenre)
     //trying to start the game below 
     
-   
+  
 
 // event listners to append they lyrics (questions) to the card
-const $popLyrics = $pop[Math.floor(Math.random() * $pop.length)]
+const popIndex = Math.floor(Math.random() * $pop.length)
+const $popLyrics = $pop[popIndex] // wrap in a startgame funciton 
+
 const $rapLyrics = $rap[Math.floor(Math.random() * $rap.length)]
 const $countryLyrics = $country[Math.floor(Math.random() * $country.length)]
 const $latinLyrics = $latin[Math.floor(Math.random() * $latin.length)]
-        if ($randomGenre === "POP"){
+        function generateTriviaQuestions (){
+            if ($randomGenre === "POP"){
             // console.log($pop)//works
             $('#lyrics').append($popLyrics)
             // button choices maybe make a loop later?
-            $choice1.append($popAnswers[0])
-            $choice2.append($popAnswers[1])
-            $choice3.append($popAnswers[2])
-            $choice4.append($popAnswers[3])
+            // $choice1.append($popAnswers[0])
+            // $choice2.append($popAnswers[1])
+            // $choice3.append($popAnswers[2])
+            // $choice4.append($popAnswers[3])
+            for (let i=0; i < $choiceButtons.length; i++){
+               $($choiceButtons[i]).append($popAnswers[i])
+            }
+            triviaGamePOP();
         } else if ($randomGenre === "RAP"){
             $('#lyrics').append($rapLyrics)
-            $choice1.append($rapAnswers[0])
-            $choice2.append($rapAnswers[1])
-            $choice3.append($rapAnswers[2])
-            $choice4.append($rapAnswers[3])
+            // $choice1.append($rapAnswers[0])
+            // $choice2.append($rapAnswers[1])
+            // $choice3.append($rapAnswers[2])
+            // $choice4.append($rapAnswers[3])
+            for (let i=0; i < $choiceButtons.length; i++){
+                $($choiceButtons[i]).append($rapAnswers[i])
+             }
         } else if ($randomGenre === "COUNTRY"){
             $('#lyrics').append($countryLyrics)
-            $choice1.append($countryAnswers[0])
-            $choice2.append($countryAnswers[1])
-            $choice3.append($countryAnswers[2])
-            $choice4.append($countryAnswers[3])
+            // $choice1.append($countryAnswers[0])
+            // $choice2.append($countryAnswers[1])
+            // $choice3.append($countryAnswers[2])
+            // $choice4.append($countryAnswers[3])
+            for (let i=0; i < $choiceButtons.length; i++){
+                $($choiceButtons[i]).append($countryAnswers[i])
+             }
         } else if ($randomGenre === "LATIN"){
             $('#lyrics').append($latinLyrics)
-            $choice1.append($latinAnswers[0])
-            $choice2.append($latinAnswers[1])
-            $choice3.append($latinAnswers[2])
-            $choice4.append($latinAnswers[3])
+            // $choice1.append($latinAnswers[0])
+            // $choice2.append($latinAnswers[1])
+            // $choice3.append($latinAnswers[2])
+            // $choice4.append($latinAnswers[3])
+            for (let i=0; i < $choiceButtons.length; i++){
+                $($choiceButtons[i]).append($latinAnswers[i])
+             }
         }
         
-    //     function triviaGame () {
-    //     if ($popLyrics[0] === $choice1){
-    //         $choice1.on('click', () => {
-    //             $choice1.css('hover', '#1DB954')
-    //         })
-    //     } else {
-    //         $choice2.css('hover', 'red')
-    //         $choice3.css('hover', 'red')
-    //         $choice4.css('hover', 'red')
-    //     }
+    } generateTriviaQuestions()
 
-    // } help!!!!!!!!!!
+
+
+//game for the pop genre 
+        function triviaGamePOP () {
+            for (let i=0; i < $choiceButtons.length;i++){
+                if (popIndex === i){
+                    rightAnswer($($choiceButtons[i]))
+                } else {
+                    wrongAnswer($($choiceButtons[i]))
+                }
+            }
+        // if ($popLyrics[0] === $popAnswers[0]){
+        //         // $choice1.css('color', '#1DB954')
+        //         rightAnswer($choice1)
+        //         $popLyrics.splice(0, 1)
+        //         triviaGamePOP()
+        //     } else {
+        //     // $choice2.css('color', 'red')
+        //     // $choice3.css('color', 'red')
+        //     // $choice4.css('color', 'red')
+        //     wrongAnswer($choice2, $choice3, $choice4)
+        // } if ($popLyrics[1] === $popAnswers[1]){
+        //     // $choice2.css('background-color', '#1DB954')
+        //     rightAnswer($choice2)
+        //     $popLyrics.splice(1,1)
+        //     triviaGamePOP()
+        // } else {
+        //     // $choice1.css('color', 'red')
+        //     // $choice3.css('color', 'red')
+        //     // $choice4.css('color', 'red')
+        //     wrongAnswer($choice1, $choice3, $choice4)
+        // } if ($popLyrics[2] === $popAnswers[2]){
+        //     // $choice3.css('color', '#1DB954')
+        //     rightAnswer($choice3)
+        //     $popLyrics.splice(2,1)
+        //     triviaGamePOP()
+        // } else {
+        //     // $choice1.css('color', 'red')
+        //     // $choice2.css('color', 'red')
+        //     // $choice4.css('color', 'red')
+        //     wrongAnswer($choice1, $choice2, $choice4)
+        // } if ($popLyrics[3] === $popAnswers[3]){
+        //     // $choice4.css('color', '#1DB954')
+        //     rightAnswer($choice4)
+        //     $popLyrics.splice(3,1)
+        //     console.log("Hey POP Star! You beat this round!")
+        // } else {
+        //     // $choice1.css('background-color', 'red')
+        //     // $choice3.css('background-color', 'red')
+        //     // $choice2.css('background-color', 'red')
+        //     wrongAnswer($choice1, $choice3, $choice2)
+        // }
+            
+        
+
+
+
+    } 
 
 
 }
@@ -78,14 +142,15 @@ const $latinLyrics = $latin[Math.floor(Math.random() * $latin.length)]
   //event listner for the random genre generated to show up
   $startButton.on('click', () => {
     $screen1.css('display', 'none')
-    $screen2.css('display', 'inline-block')
+    $screen2.css('display', 'inline-block').fadeOut("slow").delay(70000)
     generateGenre()
+    
+    $screen3.delay(80000).fadeIn("slow").css('display', 'inline-block')
   })
 
-   //=================================
+    //=================================
     // how can i make this pop up AFTER Animation 
-    $screen3.delay("slow");
-    $screen3.css('display', 'inline-block')
+    
 //=================================
 
   //event listner for next button to get the next question 
@@ -93,6 +158,8 @@ const $latinLyrics = $latin[Math.floor(Math.random() * $latin.length)]
   const $choice2 = $('.roundBttn2')
   const $choice3 = $('.roundBttn3')
   const $choice4 = $('.roundBttn4')
+
+  const $choiceButtons = $(".choiceBttns")
 
   
 // arrays w song lyrics (layter maybe use an API)
@@ -110,14 +177,21 @@ const $latinAnswers = ['callaita', 'chantaje', 'despacito', 'El Farsante']
 
 
 
+//function for correct answers
+function rightAnswer (correctClick){
+    correctClick.on('click', (e)=>{
+        console.log($(correctClick.currentTarget))
+$(e.target).css({'background-color':'white','color':'green','border-color': 'green'})
+})
+}
 
-
-
-
-
-
-
-
+// function that makes wrong answers red 
+function wrongAnswer (clickedBttn){
+    clickedBttn.on('click', (e)=>{
+        console.log('wrong answer')
+$(e.target).css({'background-color':'white','color':'red','border-color': 'red'})
+})
+}
 
 
 
