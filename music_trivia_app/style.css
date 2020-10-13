@@ -48,17 +48,28 @@ top: 172px;
 .screen2 {
     
     display: none;
+    animation: fade-out 5s ease-out 1 normal both;
     
    
 }
 
-.card {
+@keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+
+#genre {
     background-color:#191414;
     display: flex;
     justify-content: center;
 }
 
-.card-body{
+#genreCardBody{
     background-color:#191414;
     padding: 6.25rem;
 }
@@ -75,4 +86,33 @@ top: 172px;
     top: -385px;
     left: 126px;
     transform: rotate(-17deg);
+}
+
+.screen3 {
+    display: none;
+}
+#round1Challenge{
+    width: 150%;
+    height: 900px;
+}
+#roundHeader {
+    background-color: #FFFFFF;
+    color: #191414;
+}
+#roundBody {
+    background-color: #1DB954;
+    color: #191414;
+    
+}
+#roundBttn {
+    background-color: #191414;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+#roundBttn:hover {
+    background-color: #FFFFFF;
+    color: #191414;
+}
+#answerBox{
+    width: 90%;
 }
