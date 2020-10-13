@@ -29,11 +29,21 @@ $(() => {
     $screen3.css('display', 'inline-block')
 //=================================
 
-        if ($randomGenre === "POP"){
-            console.log($pop)//works but not what i want.. visit later 
-           
+// event listners to append they lyrics to the card
 
-            
+        if ($randomGenre === "POP"){
+            // console.log($pop)//works but not what i want.. visit later 
+           const $popLyrics = $pop[Math.floor(Math.random() * $pop.length)]
+            $('#lyrics').append($popLyrics)
+        } else if ($randomGenre === "RAP"){
+            const $rapLyrics = $rap[Math.floor(Math.random() * $rap.length)]
+            $('#lyrics').append($rapLyrics)
+        } else if ($randomGenre === "COUNTRY"){
+            const $countryLyrics = $country[Math.floor(Math.random() * $country.length)]
+            $('#lyrics').append($countryLyrics)
+        } else if ($randomGenre === "LATIN"){
+            const $latinLyrics = $latin[Math.floor(Math.random() * $latin.length)]
+            $('#lyrics').append($latinLyrics)
         }
         
         
@@ -47,12 +57,12 @@ $(() => {
   })
 
 // arrays w song lyrics (layter maybe use an API)
-const $pop = ['one, dont pick up the phone', 'it lingers when you\'re done']
-const $rap = ['I know when that hotline bling']
-const $country = ['Let\'s have a house party']
-const $latin = ['ella es callaita']
+const $pop = ['one, dont pick up the phone', 'it lingers when you\'re done', 'day to night to morning, keeping me in the moment ']
+const $rap = ['I know when that hotline bling', 'I know when you text me girl, I don\'t always reply,Well you\'re not an angel either, you can\'t even fly', 'I got a condo in Manhattan, Baby girl, what\'s hatnin\'?']
+const $country = ['Let\'s have a house party', 'Doin\' 15 in a 30, I ain\'t in no hurry', 'cold beer on a Friday night, A pair of jeans that fit just right']
+const $latin = ['ella es callaita', 'Oye, baby, no seas mala, No me dejes con las ganas', 'Quiero respirar tu cuello despacito, Deja que te diga cosas al oido' ]
 
-// event listner for round 1 to show up after screen 2 gone 
+
 
 
 
