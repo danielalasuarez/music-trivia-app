@@ -26,118 +26,138 @@ $(() => {
     
   
 
-// event listners to append they lyrics (questions) to the card
-const popIndex = Math.floor(Math.random() * $pop.length)
-const $popLyrics = $pop[popIndex] // wrap in a startgame funciton 
+//// function to append they lyrics (questions) to the card////
 
-const $rapLyrics = $rap[Math.floor(Math.random() * $rap.length)]
-const $countryLyrics = $country[Math.floor(Math.random() * $country.length)]
-const $latinLyrics = $latin[Math.floor(Math.random() * $latin.length)]
+////////below is what I had before the index
+//const $rapLyrics = $rap[Math.floor(Math.random() * $rap.length)]
+//const $countryLyrics = $country[Math.floor(Math.random() * $country.length)]
+//const $latinLyrics = $latin[Math.floor(Math.random() * $latin.length)]
+
+//// setting variables that generate random string from our arrays that include lyrics////
+//popindex generates random string of $pop and gets the index(number) of the string from $pop it is generating
+//$popLyrics is $pop going through the raqndom array WITH the index. Need this for later to loop through $popAnswers
+const popIndex = Math.floor(Math.random() * $pop.length) //gives number value 
+const $popLyrics = $pop[popIndex] // wrap in a startgame funciton //
+
+const rapIndex = Math.floor(Math.random() * $rap.length)
+const $rapLyrics = $rap[rapIndex]
+
+const countryIndex = Math.floor(Math.random() * $country.length)
+const $countryLyrics = $country[countryIndex]
+
+const latinIndex = Math.floor(Math.random() * $latin.length)
+const $latinLyrics = $latin[latinIndex]
+
+
         function generateTriviaQuestions (){
             if ($randomGenre === "POP"){
             // console.log($pop)//works
+            //stick lyrics to the top of the card
             $('#lyrics').append($popLyrics)
-            // button choices maybe make a loop later?
-            // $choice1.append($popAnswers[0])
-            // $choice2.append($popAnswers[1])
-            // $choice3.append($popAnswers[2])
-            // $choice4.append($popAnswers[3])
+            // loop through all of the buttons and append to the pop answers array to each button
             for (let i=0; i < $choiceButtons.length; i++){
                $($choiceButtons[i]).append($popAnswers[i])
             }
-            triviaGamePOP();
+            triviaGamePOP(); // calling the function that triggers the game to start
         } else if ($randomGenre === "RAP"){
+            //appenidng the random rap lyrics to the top of card 
             $('#lyrics').append($rapLyrics)
-            // $choice1.append($rapAnswers[0])
-            // $choice2.append($rapAnswers[1])
-            // $choice3.append($rapAnswers[2])
-            // $choice4.append($rapAnswers[3])
+                // loopoing through the buttons and appending rap answers array to each button
             for (let i=0; i < $choiceButtons.length; i++){
                 $($choiceButtons[i]).append($rapAnswers[i])
              }
+             triviaGameRAP ();
         } else if ($randomGenre === "COUNTRY"){
+            //appenidng the random rap lyrics to the top of card 
             $('#lyrics').append($countryLyrics)
-            // $choice1.append($countryAnswers[0])
-            // $choice2.append($countryAnswers[1])
-            // $choice3.append($countryAnswers[2])
-            // $choice4.append($countryAnswers[3])
+            // loopoing through the buttons and appending country answers array to each button
             for (let i=0; i < $choiceButtons.length; i++){
                 $($choiceButtons[i]).append($countryAnswers[i])
              }
+             triviaGameCOUNTRY();
         } else if ($randomGenre === "LATIN"){
+            //appenidng the random rap lyrics to the top of card 
             $('#lyrics').append($latinLyrics)
-            // $choice1.append($latinAnswers[0])
-            // $choice2.append($latinAnswers[1])
-            // $choice3.append($latinAnswers[2])
-            // $choice4.append($latinAnswers[3])
+            // loopoing through the buttons and appending latin answers array to each button
             for (let i=0; i < $choiceButtons.length; i++){
                 $($choiceButtons[i]).append($latinAnswers[i])
              }
+             triviaGameLATIN();
         }
         
     } generateTriviaQuestions()
 
 
+/////////functions for games to chnage color right/ wrong answers///////////////////
 
-//game for the pop genre 
+////game for the pop genre////
         function triviaGamePOP () {
-            for (let i=0; i < $choiceButtons.length;i++){
-                if (popIndex === i){
-                    rightAnswer($($choiceButtons[i]))
-                } else {
-                    wrongAnswer($($choiceButtons[i]))
+            // loop that loops through all of the buttons and says if the popindex is equal to i(a num) then run right answer(changes css) and use the buttons with i as a param
+            for (let i=0; i < $choiceButtons.length;i++){ // targets alll of the buttons
+                if (popIndex === i){ // we are setting popindex to i(a random value)
+                    rightAnswer($($choiceButtons[i])) // we run rightAnswer which changes css and use the buttons[i].. this means if popindex i is true then run the right answer function w that button that has value of i 
+                } else { 
+                    wrongAnswer($($choiceButtons[i])) // if popIndex is not i then run wrong answers function
                 }
             }
-        // if ($popLyrics[0] === $popAnswers[0]){
-        //         // $choice1.css('color', '#1DB954')
-        //         rightAnswer($choice1)
-        //         $popLyrics.splice(0, 1)
-        //         triviaGamePOP()
-        //     } else {
-        //     // $choice2.css('color', 'red')
-        //     // $choice3.css('color', 'red')
-        //     // $choice4.css('color', 'red')
-        //     wrongAnswer($choice2, $choice3, $choice4)
-        // } if ($popLyrics[1] === $popAnswers[1]){
-        //     // $choice2.css('background-color', '#1DB954')
-        //     rightAnswer($choice2)
-        //     $popLyrics.splice(1,1)
-        //     triviaGamePOP()
-        // } else {
-        //     // $choice1.css('color', 'red')
-        //     // $choice3.css('color', 'red')
-        //     // $choice4.css('color', 'red')
-        //     wrongAnswer($choice1, $choice3, $choice4)
-        // } if ($popLyrics[2] === $popAnswers[2]){
-        //     // $choice3.css('color', '#1DB954')
-        //     rightAnswer($choice3)
-        //     $popLyrics.splice(2,1)
-        //     triviaGamePOP()
-        // } else {
-        //     // $choice1.css('color', 'red')
-        //     // $choice2.css('color', 'red')
-        //     // $choice4.css('color', 'red')
-        //     wrongAnswer($choice1, $choice2, $choice4)
-        // } if ($popLyrics[3] === $popAnswers[3]){
-        //     // $choice4.css('color', '#1DB954')
-        //     rightAnswer($choice4)
-        //     $popLyrics.splice(3,1)
-        //     console.log("Hey POP Star! You beat this round!")
-        // } else {
-        //     // $choice1.css('background-color', 'red')
-        //     // $choice3.css('background-color', 'red')
-        //     // $choice2.css('background-color', 'red')
-        //     wrongAnswer($choice1, $choice3, $choice2)
-        // }
-            
-        
-
-
-
     } 
+
+    ////game for the rap genre////
+    function triviaGameRAP () {
+        // loop that loops through all of the buttons and says if the popindex is equal to i(a num) then run right answer(changes css) and use the buttons with i as a param
+        for (let i=0; i < $choiceButtons.length;i++){ // targets alll of the buttons
+            if (rapIndex === i){ // we are setting popindex to i(a random value)
+                rightAnswer($($choiceButtons[i])) // we run rightAnswer which changes css and use the buttons[i].. this means if popindex i is true then run the right answer function w that button that has value of i 
+            } else { 
+                wrongAnswer($($choiceButtons[i])) // if popIndex is not i then run wrong answers function
+            }
+        }
+} 
+
+    ////game for the country genre////
+    function triviaGameCOUNTRY () {
+        // loop that loops through all of the buttons and says if the popindex is equal to i(a num) then run right answer(changes css) and use the buttons with i as a param
+        for (let i=0; i < $choiceButtons.length;i++){ // targets alll of the buttons
+            if (countryIndex === i){ // we are setting popindex to i(a random value)
+                rightAnswer($($choiceButtons[i])) // we run rightAnswer which changes css and use the buttons[i].. this means if popindex i is true then run the right answer function w that button that has value of i 
+            } else { 
+                wrongAnswer($($choiceButtons[i])) // if popIndex is not i then run wrong answers function
+            }
+        }
+} 
+
+    ////game for the latin genre////
+    function triviaGameLATIN () {
+        // loop that loops through all of the buttons and says if the popindex is equal to i(a num) then run right answer(changes css) and use the buttons with i as a param
+        for (let i=0; i < $choiceButtons.length;i++){ // targets alll of the buttons
+            if (latinIndex === i){ // we are setting popindex to i(a random value)
+                rightAnswer($($choiceButtons[i])) // we run rightAnswer which changes css and use the buttons[i].. this means if popindex i is true then run the right answer function w that button that has value of i 
+            } else { 
+                wrongAnswer($($choiceButtons[i])) // if popIndex is not i then run wrong answers function
+            }
+        }
+} 
 
 
 }
+
+////function for correct answers to turn green////
+// when correctClick is clicked then we run an anon function that makes e the target and changes css
+function rightAnswer (correctClick){
+    correctClick.on('click', (e)=>{
+        // console.log($(correctClick.currentTarget)) //worked
+$(e.target).css({'background-color':'white','color':'green','border-color': 'green'})
+})
+}
+
+////function that makes wrong answers red////
+function wrongAnswer (clickedBttn){
+    clickedBttn.on('click', (e)=>{
+        // console.log('wrong answer') //worked
+$(e.target).css({'background-color':'white','color':'red','border-color': 'red'})
+})
+}
+
 
   //event listner for the random genre generated to show up
   $startButton.on('click', () => {
@@ -148,12 +168,8 @@ const $latinLyrics = $latin[Math.floor(Math.random() * $latin.length)]
     $screen3.delay(80000).fadeIn("slow").css('display', 'inline-block')
   })
 
-    //=================================
-    // how can i make this pop up AFTER Animation 
-    
-//=================================
 
-  //event listner for next button to get the next question 
+  ////event listner for next button to get the next question ////
   const $choice1 = $('.roundBttn1')
   const $choice2 = $('.roundBttn2')
   const $choice3 = $('.roundBttn3')
@@ -177,21 +193,6 @@ const $latinAnswers = ['callaita', 'chantaje', 'despacito', 'El Farsante']
 
 
 
-//function for correct answers
-function rightAnswer (correctClick){
-    correctClick.on('click', (e)=>{
-        console.log($(correctClick.currentTarget))
-$(e.target).css({'background-color':'white','color':'green','border-color': 'green'})
-})
-}
-
-// function that makes wrong answers red 
-function wrongAnswer (clickedBttn){
-    clickedBttn.on('click', (e)=>{
-        console.log('wrong answer')
-$(e.target).css({'background-color':'white','color':'red','border-color': 'red'})
-})
-}
 
 
 
