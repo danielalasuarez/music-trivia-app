@@ -5,15 +5,14 @@
 // lyrics will come out on screen
 // user will have to guess the name of the song as fast as possible
 // if user clicks the right answer thats a point if user clicks wrong answer thats -1 point
-// how many songs can you guess in 40 seconds? // add timer 
+// how many songs can you guess in 40 seconds? // add timer
 
-// need to add function that will continue if right answer is clicked 
+// need to add function that will continue if right answer is clicked
 // need to add logic to keep track of points gained/lost
-//need to add timer 
+//need to add timer
 //need to add more lyrics & maybe more buttons
 //need to fix css
 //if time add other rounds
-
 
 $(() => {
   //variables
@@ -22,7 +21,7 @@ $(() => {
   const $screen3 = $('#screen3')
   const $startButton = $('#startGame')
   const $genres = ['POP', 'RAP', 'COUNTRY', 'LATIN']
-  var score = 0;
+  var score = 0
 
   //function that generates random genre
   function generateGenre() {
@@ -63,6 +62,7 @@ $(() => {
           $($choiceButtons[i]).append($popAnswers[i])
         }
         triviaGamePOP() // calling the function that triggers the game to start
+        nextQuestion()
       } else if ($randomGenre === 'RAP') {
         //appenidng the random rap lyrics to the top of card
         $('#lyrics').append($rapLyrics)
@@ -95,15 +95,19 @@ $(() => {
 
     ////game for the pop genre////
     function triviaGamePOP() {
-      // loop that loops through all of the buttons and says if the popindex is equal to i(a num) then run right answer(changes css) and use the buttons with i as a param
+      // loop that is saying if the index of i of lyrics array is the same as index of i of the answers array then it is right
       for (let i = 0; i < $choiceButtons.length; i++) {
-        // targets alll of the buttons
+        // we use $chocie bttns bc we appended the answers array to this
+        // the above targets choice buttons. the below targets index of questions array and answer array
         if (popIndex === i) {
-          // we are setting popindex to i(a random value)
-          rightAnswer($($choiceButtons[i])); // we run rightAnswer which changes css and use the buttons[i].. this means if popindex i is true then run the right answer function w that button that has value of i
+          // if popIndex(questions) equals to an index
+          // for example if pop index = [2] then.. we run the func when the choice button with the same i is clicked so in this example if the choice button has [2]
+          rightAnswer($($choiceButtons[i])) // we run rightAnswer func which changes css of button when clicked . we pass the param of choiceBttns bc those are what we appended the answers array to previously. we use [i] to say we want the index of the answer in the answer array which are appended to choicebttns
+        
         } else {
-          wrongAnswer($($choiceButtons[i])); // if popIndex is not i then run wrong answers function  
-          
+          // if the [i]'s dont match then the buttons are wrong
+          wrongAnswer($($choiceButtons[i])) // if popIndex is not i then run wrong answers function
+          // this loop pretty much says if the [i]'s have the same index then run rightAnswer func if not run wrong answer func
         }
       }
     }
@@ -149,6 +153,18 @@ $(() => {
         }
       }
     }
+
+
+     /////////function to loop through the game and move on to the next question or not///////
+  // i want to call this function in the right answer function////
+// goal: if right answer function is run then splice that question and move to next ...
+  function nextQuestion(click) {
+    if (click == rightAnswer) {
+    
+    }
+  }
+
+
   }
 
   ////function for correct answers to turn green////
@@ -161,8 +177,8 @@ $(() => {
         color: '#1DB954',
         'border-color': '#1DB954',
       })
-      alert("CORRECT!")
-      score++;
+      alert('CORRECT!')
+      score++
       console.log(score)
     })
   }
@@ -176,9 +192,11 @@ $(() => {
         color: 'red',
         'border-color': 'red',
       })
-      alert("WRONG!")
+      alert('WRONG!')
     })
   }
+
+ 
 
   //event listner for the random genre generated to show up
   $startButton.on('click', () => {
