@@ -112,14 +112,14 @@ top: 172px;
     color: #191414;
     
 }
-#roundBttn{
+.choiceBttns {
     background-color: #191414;
     color: #FFFFFF;
     margin-top: 10px;
     border-color: #FFFFFF;
     
 }
-#roundBttn:hover {
+.choiceBttns:hover {
     background-color: #FFFFFF;
     color: #191414;
     border-color: #191414;
@@ -127,3 +127,15 @@ top: 172px;
 #answerBox{
     width: 90%;
 }
+
+/* .correctButton {
+    background-color: #191414;
+    color: #1DB954;
+    border-color: #1DB954;
+}
+
+.incorrectButton {
+    background-color: #191414;
+    color: red;
+    border-color: red;
+} */
