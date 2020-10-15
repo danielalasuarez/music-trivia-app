@@ -128,6 +128,14 @@ top: 172px;
     width: 90%;
 }
 
+.btn-primary.focus, .btn-primary:focus {
+    background-color: #191414;
+    color: #FFFFFF;
+    margin-top: 10px;
+    border-color: #FFFFFF;
+    box-shadow: #FFFFFF;
+}
+
 /* .correctButton {
     background-color: #191414;
     color: #1DB954;

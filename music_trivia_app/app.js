@@ -126,7 +126,7 @@ $(() => {
           $($choiceButtons[i]).unbind()
           $($choiceButtons[i])
             .html(gameMaterials.pop[i].answer)
-            // .removeClass('incorrectButton').removeClass('correctButton')
+            // .removeAttr('style')
           if (
             gameMaterials.pop[i].answer ===
             gameMaterials.pop[questionIndex].answer
@@ -242,7 +242,29 @@ $(() => {
             color: 'red',
             'border-color': 'red',
           })
+          console.log(score)
+          index++
+          $('#lyrics').html('')
+        if (index < gameMaterials.pop.length) {
+          generateGenre(index)
+        } else {
+          alert('GAME OVER!! FINAL SCORE: ' + score)
+        }
       })
     }
+
+    //   ////function to remove css////
+    // function resetButton (click){
+    //     $choiceButtons.removeAttr('style')
+    //      }
+
+
+
+
+
+
+
   })
+
+
   
