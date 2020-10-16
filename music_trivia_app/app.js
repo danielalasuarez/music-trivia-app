@@ -1,18 +1,11 @@
 // make start button work and prompt the random genre
 // random genre function
 
-//  after rando genre is generated then after 20 seconds the game will begin
+//  after rando genre is generated game begins
 // lyrics will come out on screen
 // user will have to guess the name of the song as fast as possible
-// if user clicks the right answer thats a point if user clicks wrong answer thats -1 point
-// how many songs can you guess in 40 seconds? // add timer
+// if user clicks the right answer thats a point if user clicks wrong answer that is no point. the point of the game is to beat your high score.
 
-// need to add function that will continue if right answer is clicked
-// need to add logic to keep track of points gained/lost
-//need to add timer
-//need to add more lyrics & maybe more buttons
-//need to fix css
-//if time add other rounds
 
 $(() => {
     //variables
@@ -25,7 +18,7 @@ $(() => {
     var score = 0
     let index = 0
   
-    //arrays
+    //object that contains arrays with different genre functions
     const gameMaterials = {
       pop: [
         {
@@ -111,33 +104,33 @@ $(() => {
   
 
     
-    //function that generates random genre//
+    //generates random genre//
     const $randomGenre = $genres[Math.floor(Math.random() * $genres.length)]
     // console.log($randomGenre)
     $('.randomGen').html($randomGenre)
 
+    /// game function//
     function generateGenre(questionIndex) {
-      if ($randomGenre === 'pop') {
-        const $questionPlacePop = $(
+      if ($randomGenre === 'pop') { // if it generates pop
+        const $questionPlacePop = $( //grabbing the index of the question in pop array in this case 
           '<p>' + gameMaterials.pop[questionIndex].question + '</p>',
         )
-        $('#lyrics').append($questionPlacePop)
-        for (let i = 0; i < $choiceButtons.length; i++) {
-          $($choiceButtons[i]).unbind()
-          $($choiceButtons[i])
-            .html(gameMaterials.pop[i].answer)
-            // .removeAttr('style')
-          if (
+        $('#lyrics').append($questionPlacePop) // appending what we grabbed to #lyric
+        for (let i = 0; i < $choiceButtons.length; i++) { //grabbing and looping through buttons
+          $($choiceButtons[i]).unbind() // clearing out what we setthe buttons to
+          $($choiceButtons[i]) //grabbing index of buttons
+            .html(gameMaterials.pop[i].answer) //adding the answers to the display of buttons
+          if ( //if the index of the answer in pop array is equal to the index of the answer randomly chosen...
             gameMaterials.pop[i].answer ===
             gameMaterials.pop[questionIndex].answer
           ) {
-            rightAnswer($($choiceButtons[i]))
+            rightAnswer($($choiceButtons[i])) // run the right answer function on the button w the same index 
           } else {
-            wrongAnswer($($choiceButtons[i]))
+            wrongAnswer($($choiceButtons[i])) // if not run wrong answer on the index that are not the same
           }
         }
        
-      } else if ($randomGenre === 'rap') {
+      } else if ($randomGenre === 'rap') { // repeating the above for every genre 
         const $questionPlaceRap = $(
           '<p>' + gameMaterials.rap[questionIndex].question + '</p>',
         )
@@ -207,7 +200,7 @@ $(() => {
       $screen2.css('display', 'inline-block').fadeOut('slow').delay(70000)
       generateGenre(index)
   
-      $screen3.delay(80000).fadeIn('slow').css('display', 'inline-block')
+      $screen3.delay(100000).fadeIn('slow').css('display', 'inline-block')
     })
   
   
@@ -221,13 +214,12 @@ $(() => {
             color: '#1DB954',
             'border-color': '#1DB954',
           })
-        score++
+        score++ // increments score 
         console.log(score)
-        index++
-        $('#lyrics').html('')
-        if (index < gameMaterials.pop.length) {
-          generateGenre(index)
-        } else {
+        $('#lyrics').html('') // clears out the displayed index so only the index ++ will be displayed
+        if (index < gameMaterials.pop.length) { //if the index is less than the length of the array pop
+          generateGenre(index) //then run the game function again passing through the index which means run it but it already ran the first index
+        } else { // if index is not less than the lenght of pop array game over 
           alert('GAME OVER!! FINAL SCORE: ' + score)
         }
       })
@@ -243,28 +235,29 @@ $(() => {
             'border-color': 'red',
           })
           console.log(score)
-          index++
-          $('#lyrics').html('')
-        if (index < gameMaterials.pop.length) {
+          index++ //if answer is wrong still increment index 
+          $('#lyrics').html('') // clear html display so only next one can be displayed
+
+        if (index < gameMaterials.pop.length) { // same as above except we are not incrementing the score 
           generateGenre(index)
         } else {
           alert('GAME OVER!! FINAL SCORE: ' + score)
+//         $screen4.css('display', 'block');
+// $screen3.append($screen4)
         }
       })
     }
 
-    //   ////function to remove css////
-    // function resetButton (click){
-    //     $choiceButtons.removeAttr('style')
-    //      }
-
-
-
-
+  
+const $screen4 = $('#screen4')
+    // const removeCSS = ()=>{
+    //     $choiceButtons.addClass('choiceBttns')
+    // }
 
 
 
   })
 
-
+// BUTTONS!!!!!!!!!!!!!!!
+//SCREEN $???
   
