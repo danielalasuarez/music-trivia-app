@@ -250,22 +250,15 @@ $(() => {
             }, 500)
         } else {
           alert('GAME OVER!! FINAL SCORE: ' + score)
-//         $screen4.css('display', 'block');
-// $screen3.append($screen4)
+   
         }
       })
     }
 
-  
-// const $screen4 = $('#screen4')
-//     // const removeCSS = ()=>{
-//     //     $choiceButtons.addClass('choiceBttns')
-//     // }
+
 
 
 
   })
 
-// BUTTONS!!!!!!!!!!!!!!!
-//SCREEN $???
   
