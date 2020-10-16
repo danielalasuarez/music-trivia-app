@@ -216,9 +216,14 @@ $(() => {
           })
         score++ // increments score 
         console.log(score)
+        index++
+        
         $('#lyrics').html('') // clears out the displayed index so only the index ++ will be displayed
         if (index < gameMaterials.pop.length) { //if the index is less than the length of the array pop
-          generateGenre(index) //then run the game function again passing through the index which means run it but it already ran the first index
+            setTimeout(() => {
+                $choiceButtons.attr( "style", "" )
+            generateGenre(index) //then run the game function again passing through the index which means run it but it already ran the first index
+            }, 500) // delays the green css and changes it back 
         } else { // if index is not less than the lenght of pop array game over 
           alert('GAME OVER!! FINAL SCORE: ' + score)
         }
@@ -239,7 +244,10 @@ $(() => {
           $('#lyrics').html('') // clear html display so only next one can be displayed
 
         if (index < gameMaterials.pop.length) { // same as above except we are not incrementing the score 
-          generateGenre(index)
+            setTimeout(() => {
+                $choiceButtons.attr( "style", "" )
+            generateGenre(index) //then run the game function again passing through the index which means run it but it already ran the first index
+            }, 500)
         } else {
           alert('GAME OVER!! FINAL SCORE: ' + score)
 //         $screen4.css('display', 'block');
@@ -249,10 +257,10 @@ $(() => {
     }
 
   
-const $screen4 = $('#screen4')
-    // const removeCSS = ()=>{
-    //     $choiceButtons.addClass('choiceBttns')
-    // }
+// const $screen4 = $('#screen4')
+//     // const removeCSS = ()=>{
+//     //     $choiceButtons.addClass('choiceBttns')
+//     // }
 
 
 
